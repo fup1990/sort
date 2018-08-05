@@ -5,14 +5,29 @@ package com.gome.sort.merge;
  */
 public class MergeSort {
 
-    public int[] mergeSort(int[] array, int left, int right) {
+    public void mergeSort(int[] array, int left, int right) {
         if (left < right) {
-            int center = (right - left) / 2;
-            int[] l = mergeSort(array, left, center);
-            int[] r =mergeSort(array, center + 1, right);
-            return merge(l, r);
+            int center = (right - 3 * left) / 2;
+            mergeSort(array, left, center);
+            mergeSort(array, center + 1, right);
+            merge(array, left, center, right);
         }
-        return array;
+        return;
+    }
+
+    private void merge(int[] array, int left,int center, int right) {
+        int li = left;
+        int ri = center == 0 ? right : center + 1;
+        for (int i = li; i < right - left + 1; i++) {
+            if (array[li] < array[ri]) {
+                array[i] = array[li];
+                li++;
+            } else {
+                array[i] = array[ri];
+                ri++;
+            }
+        }
+
     }
 
     public int[] merge(int[] left, int[] right) {
