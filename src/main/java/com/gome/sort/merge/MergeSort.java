@@ -5,6 +5,12 @@ package com.gome.sort.merge;
  */
 public class MergeSort {
 
+    /**
+     * 递归的将数组拆分成左右两个排序好的数组，再合并两个数组
+     * @param array
+     * @param left
+     * @param right
+     */
     public void mergeSort(int[] array, int left, int right) {
         if (left < right) {
             int center = (right + left) / 2;
